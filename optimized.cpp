@@ -87,6 +87,7 @@ void multiply(vector < vector<double> > matA,
   vector < vector<double> > matB,  vector < vector<double> >& result){
   int n = matA.size();
 
+  //Take the traspose of the second matrix
   vector< vector<double> > matBT(n, vector<double>(n,0));
   #pragma omp parallel for
   for(int i=0; i<n; i++){
@@ -95,6 +96,7 @@ void multiply(vector < vector<double> > matA,
     }
   }
 
+  //Parallism is only for the outer loop
   #pragma omp parallel for
   for(int i=0; i<n; i++){
     for(int j=0; j<n; j++){
