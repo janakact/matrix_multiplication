@@ -5,10 +5,10 @@ g++ -std=c++11  optimized.cpp -o opt -fopenmp
 
 echo Run Programs
 echo Sequencial Program
-# ./seq
+./seq 20
 
 echo Parallel Program
-./par
+./par 20
 
 echo Optimized Parallel Program
-./opt
+./opt 20

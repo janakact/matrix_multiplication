@@ -16,12 +16,17 @@ void multiply(vector < vector<double> > matA, vector < vector<double> > matB,  v
 int main(int argc, char** argv)
 {
 
+  //Arguments handeling
+  if(argc<=1){
+    cout << "\nNot enough arguments\nUsage\n---------------------------\n1-number of samples per experiment\n";
+    return 0;
+  }
+  int iterations = atoi(argv[1]);
+
   cout << "n\t\tsamples\t\tavgTime(ms)\t\tstd(ms)\n";
   for(int n=200; n<=2000; n+=200)
   {
-    //Samples
-    int iterations = 10;
-
+    
     cout << n << "\t\t" << iterations << "\t\t";
 
     double sum = 0, square_sum=0;
@@ -81,7 +86,7 @@ void fillRandom(vector < vector<double> >& mat){
 void multiply(vector < vector<double> > matA,
   vector < vector<double> > matB,  vector < vector<double> >& result){
   int n = matA.size();
-  
+
   #pragma omp parallel for
   for(int i=0; i<n; i++){
 
